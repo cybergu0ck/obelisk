@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "obelisk.chisel",
-        "title": "Chisel"
+        "command": "obelisk.chiselActiveFile",
+        "title": "Chisel active file"
       }
     ]
   },

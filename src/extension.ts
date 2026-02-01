@@ -3,7 +3,7 @@ import { chiselContent } from "./formatter";
 
 export function activate(context: vscode.ExtensionContext) {
   const disposable = vscode.commands.registerCommand(
-    "obelisk.chisel",
+    "obelisk.chiselActiveFile",
     async () => {
       const editor = vscode.window.activeTextEditor;
       if (!editor) {
