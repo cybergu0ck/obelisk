@@ -23,12 +23,14 @@ export function activate(context: vscode.ExtensionContext) {
         );
         edit.replace(document.uri, fullRange, chiseledContent);
         await vscode.workspace.applyEdit(edit);
-        vscode.window.showInformationMessage(
+        vscode.window.setStatusBarMessage(
           "Current file is chiseled succesfully",
+          3000,
         );
       } else {
-        vscode.window.showInformationMessage(
+        vscode.window.setStatusBarMessage(
           "Current file is not a markdown file",
+          5000,
         );
       }
     },
