@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "obelisk.helloWorld",
-        "title": "Hello World"
+        "command": "obelisk.chisel",
+        "title": "Chisel"
       }
     ]
   },
