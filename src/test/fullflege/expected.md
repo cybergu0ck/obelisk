@@ -1,8 +1,3 @@
-<br/>
-<br/>
-<br/>
-<br/>
-
 # 76. Minimum Window Substring
 
 Hard [level question on leetcode](https://leetcode.com/problems/minimum-window-substring/description/).

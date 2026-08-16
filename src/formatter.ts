@@ -9,7 +9,7 @@ export function chiselContent(content: string): string {
   let isCodeBlock: Boolean = false;
   let prevLine: String = "";
 
-  for (const line of lines) {
+  for (const [index, line] of lines.entries()) {
     if (line.startsWith('```')){
         isCodeBlock = !isCodeBlock;
     }
@@ -37,6 +37,11 @@ export function chiselContent(content: string): string {
     else if(isImage){
         res += line;
         res += "\n";
+    }
+    else if(index === 0)
+    {
+        res += line;
+        res += '\n';
     }
     else{
         if (lineBreakTags.includes(trimmed) || trimmed === ""){
