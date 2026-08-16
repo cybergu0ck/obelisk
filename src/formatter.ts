@@ -7,18 +7,44 @@ export function chiselContent(content: string): string {
   let res: string = "";
 
   let isCodeBlock: Boolean = false;
+  let prevLine: String = "";
 
   for (const line of lines) {
-    const trimmed = line.trim();
-    if (lineBreakTags.includes(trimmed) || trimmed === "") continue;
-    if (trimmed.startsWith('```')){
+    if (line.startsWith('```')){
         isCodeBlock = !isCodeBlock;
     }
 
+    const trimmed = line.trim();
+    let isBulletPoint = false;
+    let isImage = false;
+    if(trimmed.startsWith('-') || trimmed.startsWith('*')){
+        isBulletPoint = true;
+    }
+    else if(trimmed.startsWith('!'))
+    {
+        isImage = true;
+    }
+
+
     if(isCodeBlock){
-        res += trimmed;
+        res += line;
+        res += "\n";
+    }
+    else if(isBulletPoint){
+        res += line;
+        res += "\n";
+    }
+    else if(isImage){
+        res += line;
+        res += "\n";
     }
     else{
+        if (lineBreakTags.includes(trimmed) || trimmed === ""){
+            res += "\n";
+            prevLine = line;
+            continue;
+        }
+
         const headingMatch = trimmed.match(/^(#{1,4})\s/);
         if (headingMatch) {
             const level = headingMatch[1].length; // number of '#'
@@ -29,11 +55,18 @@ export function chiselContent(content: string): string {
             res += trimmed;
         } 
         else {
+            if(prevLine.trim().startsWith('-')){
+                res += '\n';
+            }
+            if(prevLine.trim().startsWith('!')){
+                res += '\n';
+            }
             res += trimmed;
         }
         res += "\n";
     }
-    res += "\n";
+    
+    prevLine = line;
   }
 
   return res;
