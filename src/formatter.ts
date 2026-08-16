@@ -4,26 +4,37 @@ const totalVerticalOffset: number = 5;
 
 export function chiselContent(content: string): string {
   const lines = content.split(/\r?\n/);
-  const resArray: string[] = [];
+  let res: string = "";
+
+  let isCodeBlock: Boolean = false;
 
   for (const line of lines) {
     const trimmed = line.trim();
-
     if (lineBreakTags.includes(trimmed) || trimmed === "") continue;
-
-    const headingMatch = trimmed.match(/^(#{1,4})\s/);
-
-    if (headingMatch) {
-      const level = headingMatch[1].length; // number of '#'
-      const neededLineBreaks = totalVerticalOffset - level;
-
-      let brs = Array(neededLineBreaks).fill(lineBreak).join("\n");
-      resArray.push(brs);
-      resArray.push(trimmed);
-    } else {
-      resArray.push(trimmed);
+    if (trimmed.startsWith('```')){
+        isCodeBlock = !isCodeBlock;
     }
+
+    if(isCodeBlock){
+        res += trimmed;
+    }
+    else{
+        const headingMatch = trimmed.match(/^(#{1,4})\s/);
+        if (headingMatch) {
+            const level = headingMatch[1].length; // number of '#'
+            const neededLineBreaks = totalVerticalOffset - level;
+
+            let brs = Array(neededLineBreaks).fill(lineBreak).join("\n");
+            res += brs + '\n\n';
+            res += trimmed;
+        } 
+        else {
+            res += trimmed;
+        }
+        res += "\n";
+    }
+    res += "\n";
   }
 
-  return resArray.join("\n\n") + "\n";
+  return res;
 }
