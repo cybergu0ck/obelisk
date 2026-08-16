@@ -3,7 +3,7 @@
   "displayName": "obelisk",
   "description": "Born in the cauldron of knowledge, Obelisk is a master menhir that maintains structure and syntax integrity of my notes database.",
   "publisher": "agneshraok",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.108.1"
   },
