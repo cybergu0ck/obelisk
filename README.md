@@ -1,8 +1,3 @@
-<br/>
-<br/>
-<br/>
-<br/>
-
 # README
 
 Obelisk is a custom markdown foramtter.
@@ -14,6 +9,7 @@ Obelisk is a custom markdown foramtter.
 ## Features
 
 - Format the active markdown file using the "Chisel active file" command.
+  - `Ctrl + Shift + P` to open the command pallete and then use the above command.
 
 <br/>
 <br/>
@@ -21,11 +17,9 @@ Obelisk is a custom markdown foramtter.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 <br/>
 <br/>
 
-### 1.0.0
+### version 0.x.x
 
-Initial release of Obselisk
+Current version
