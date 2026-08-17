@@ -27,12 +27,17 @@ export function chiselContent(content: string): string {
       return;
     }
 
-    if (lineBreakTags.includes(trimmed) || trimmed === "") {
-      out.push("");
-      prevLine = line;
-      return;
+    if (trimmed === "") {
+        if(!lineBreakTags.includes(prevLine)){
+            out.push("");
+        }
+        prevLine = line;
+        return;
     }
-
+    if(lineBreakTags.includes(trimmed)){
+        prevLine = line;
+        return;
+    }
     const headingMatch = trimmed.match(/^(#{1,4})\s/);
     if (headingMatch) {
       const level = headingMatch[1].length;
