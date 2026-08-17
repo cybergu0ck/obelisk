@@ -10,8 +10,11 @@ export function chiselContent(content: string): string {
   let prevLine = "";
 
   lines.forEach((line, index) => {
-    if (line.startsWith("```")) {
+    if (line.trim().startsWith("```")) {
+      out.push(line);
+      prevLine = line;
       isCodeBlock = !isCodeBlock;
+      return;
     }
 
     const trimmed = line.trim();
